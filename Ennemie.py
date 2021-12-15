@@ -5,23 +5,28 @@ import core
 
 class Ennemie :
     def __init__(self):
-        self.rayon = (random.randint(15, 30))
+        self.rayon = 10
         self.couleur = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
         self.position = Vector2(random.randint(0,1200), random.randint(0, 800))
-        self.mass = (self.rayon*2)
-        self.nom = "Bleu"
-        self.vitesse = 5
+        self.mass = (self.rayon*1.5)
+        self.nom = 0
+        self.direction = Vector2()
+        self.vMax=5
         self.vue = 75
 
     def mourir (self):
         self.position = Vector2(random.randint(0, 1200), random.randint(0, 800))
 
+    def deplacer (self):
 
-    def déplacer (self):
-        pass
+        self.Ux = Vector2(random.randint(-1, 1), random.randint(-1, 1))
+
+        self.direction = self.Ux + self.direction
+
+        self.position = self.position + self.direction
 
     def grossir (self):
-        self.rayon = self.rayon + 1
+        self.rayon = self.rayon + 0.2
 
 
     def draw (self, screen):

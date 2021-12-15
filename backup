@@ -1,0 +1,46 @@
+'''
+    if core.getKeyPressList(pygame.K_r):
+        core.memory("centredecercle", pygame.Vector2(200, 200))
+        core.memory("direction", pygame.Vector2(0, 0))
+
+    if core.getKeyPressList(pygame.K_z):
+        if core.memory("centredecercle").y - core.memory("rayonducercle") < 0:
+            core.memory("centredecercle", pygame.Vector2(core.memory("centredecercle").x, core.memory("centredecercle").y))
+            core.memory("couleurducercle", (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+        else:
+            core.memory("centredecercle", pygame.Vector2(core.memory("centredecercle").x, core.memory("centredecercle").y - 10))
+    if core.getKeyPressList(pygame.K_s):
+        if core.memory("centredecercle").y + core.memory("rayonducercle") > core.WINDOW_SIZE[1]:
+            core.memory("centredecercle", pygame.Vector2(core.memory("centredecercle").x, core.memory("centredecercle").y))
+            core.memory("couleurducercle", (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+        else:
+            core.memory("centredecercle", pygame.Vector2(core.memory("centredecercle").x, core.memory("centredecercle").y + 10))
+    if core.getKeyPressList(pygame.K_q):
+        if core.memory("centredecercle").x - core.memory("rayonducercle") < 1:
+            core.memory("centredecercle", pygame.Vector2(core.memory("centredecercle").x, core.memory("centredecercle").y))
+            core.memory("couleurducercle", (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+        else:
+            core.memory("centredecercle", pygame.Vector2(core.memory("centredecercle").x - 10, core.memory("centredecercle").y))
+    if core.getKeyPressList(pygame.K_d):
+        if core.memory("centredecercle").x + core.memory("rayonducercle") > core.WINDOW_SIZE[0]:
+            core.memory("centredecercle", pygame.Vector2(core.memory("centredecercle").x, core.memory("centredecercle").y))
+            core.memory("couleurducercle", (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+        else:
+            core.memory("centredecercle", pygame.Vector2(core.memory("centredecercle").x + 10, core.memory("centredecercle").y))
+
+    if core.memory("centredecercle").y < 0 or core.memory("centredecercle").y > core.WINDOW_SIZE[1]:
+        core.memory("direction", Vector2(core.memory("direction").x, core.memory("direction").y * -1))
+        core.memory("couleurducercle", (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+    if core.memory("centredecercle").x < 0 or core.memory("centredecercle").x > core.WINDOW_SIZE[0]:
+        core.memory("direction", Vector2(core.memory("direction").x * -1, core.memory("direction").y))
+        core.memory("couleurducercle", (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+
+    if core.getMouseLeftClick() is not None:
+        core.memory("Ux", Vector2(core.getMouseLeftClick()) - core.memory("centredecercle"))
+        core.memory("l", core.memory("Ux").length())
+        core.memory("Ux", core.memory("Ux").normalize())
+        core.memory("L", abs(core.memory("l") - core.memory("lo")))
+        core.memory("F", 0.00004*core.memory("L") * core.memory("Ux"))
+        core.memory("direction",core.memory("direction")+core.memory("F"))
+
+        '''
